@@ -1,0 +1,23 @@
+<!--logs.wxml-->
+<view class="container log-list">
+  <text>{{grade}}</text>
+  <text>{{phonenumber}}</text>
+  
+    <view class="page__bd">
+        <view class="sub-title-1" >被推荐人：李峥</view>
+        <wux-steps current="{{ current }}">
+            <wux-step title="First" content="已下载"></wux-step>
+            <wux-step title="Second" content="已注册"></wux-step>
+            <wux-step title="Third" content="已卸载"></wux-step>
+        </wux-steps>
+        <view class="sub-title-2" >被推荐人：付伟</view>
+        <wux-steps current="{{ current }}">
+            <wux-step title="First" content="已下载"></wux-step>
+            <wux-step title="Second" content="已注册"></wux-step>
+            <wux-step title="Third" content="已卸载"></wux-step>
+        </wux-steps>
+        <view class="button-sp-area">
+            <button type="default" bindtap="onClick">Next step</button>
+        </view>
+    </view>
+</view>

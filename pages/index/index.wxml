@@ -1,0 +1,26 @@
+<!--index.wxml-->
+<view class="container">
+  <form bindsubmit="formSubmit" bindreset="formReset">
+  <view class="section">
+    <view class="section_title2">该文本框显示的为页面1的内容</view>
+    <input name="Page1Text" placeholder='{{Msg}}'/>
+    <view class="section_title">请输入手机号</view>
+    <input name="phonenumber" placeholder='请输入手机号' type="number"/>
+    <text>{{msg}}</text>
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+      <view class="picker">
+        请选择当前年级：{{array[index]}}
+      </view>
+    </picker>
+    
+  </view>
+  <view class="btn-area">
+    <button formType="submit">提交</button>
+    <button formType="reset">重置</button>
+  </view>
+  </form>
+</view>
+
+<wux-dialog id="wux-dialog" />
+
+

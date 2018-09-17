@@ -1,0 +1,6 @@
+{
+  "usingCompoents":{
+    "wux-button" : "../../button/index",
+    "wux-dialog" : "../../dialog/index"
+  }
+}

@@ -1,0 +1,18 @@
+<!--pages/face/face.wxml-->
+<canvas style="width: 100%; height: 100%" canvas-id="canvas_BG"></canvas>
+<form bindsubmit="formSubmit">
+  <view class='container'>
+    <view class="Input-area">
+      <input name="Page1Text" placeholder='请输入内容'/>
+    </view>
+  </view>
+  <cover-view class="btn-area">
+    <button formType="submit">输入完毕</button>
+  </cover-view>
+</form>
+<cover-view class="SaveImg">
+<button bindtap='save'>保存图片</button>
+</cover-view>
+
+
+

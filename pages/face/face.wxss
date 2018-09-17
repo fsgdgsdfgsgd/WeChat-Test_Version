@@ -1,0 +1,39 @@
+/* pages/face/face.wxss */
+page{
+  width: 100%;
+  height: 100%;
+}
+.Canvas{
+  position: absolute;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  z-index: -1;
+}
+.container{
+  position: absolute;
+  width: 50%;
+  height: auto;
+  left: 0px;
+  bottom:  0px;
+  z-index: 1;
+}
+.Input-area{
+  position: absolute;
+  bottom : 110rpx;
+  left: 0px;
+  background-color: papayawhip;
+}
+.btn-area{
+  position: absolute;
+  width: 50%;
+  bottom:0px;
+  z-index: 1;
+}
+.SaveImg{
+  position: absolute;
+  width: 50%;
+  bottom: 0px;
+  right: 0px;
+  z-index:9999;
+}
