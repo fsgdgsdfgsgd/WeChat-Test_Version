@@ -3,7 +3,7 @@
 <form bindsubmit="formSubmit">
   <view class='container'>
     <view class="Input-area">
-      <input name="Page1Text" placeholder='请输入内容'/>
+      <input name="Page1Text" placeholder='' bindtap='bindtap' bindconfirm='bindconfirm'/>
     </view>
   </view>
   <cover-view class="btn-area">
@@ -13,6 +13,5 @@
 <cover-view class="SaveImg">
 <button bindtap='save'>保存图片</button>
 </cover-view>
-
 
 

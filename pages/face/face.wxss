@@ -6,9 +6,9 @@ page{
 .Canvas{
   position: absolute;
   width: 100%;
-  height: auto;
+  height: 100%;
   box-sizing: border-box;
-  z-index: -1;
+  z-index: 0;
 }
 .container{
   position: absolute;
@@ -20,9 +20,13 @@ page{
 }
 .Input-area{
   position: absolute;
-  bottom : 110rpx;
-  left: 0px;
-  background-color: papayawhip;
+  bottom: 265%;
+  height: 55rpx;
+  width: 150%;
+  left: 100%;
+  background-color:white;
+  z-index: 2;
+  
 }
 .btn-area{
   position: absolute;

@@ -8,6 +8,7 @@ Page({
       msg: null,
       winWidth: 0,
       winHeight:0,
+      CavCon: null,
   },
 
   /**
@@ -32,50 +33,54 @@ Page({
           that.data.winHeight = res.windowHeight
         }
       })
-    const cav = wx.createCanvasContext("canvas_BG");
-    cav.drawImage("../../BackGround.jpg",0,0,that.data.winWidth, that.data.winHeight);
-    cav.drawImage("../../qrcode.jpg", 0, 0, 100, 100)
-    cav.draw()
+     const cav = wx.createCanvasContext("canvas_BG");
+     cav.drawImage("../../BackGround.jpg",0,0,that.data.winWidth, that.data.winHeight);
+     cav.drawImage("../../qrcode.jpg", 0, 0, 100, 100)
+     this.data.CavCon = cav
+     //cav.drawImage(this.data.src, 0, 0, 200, 200);
+     cav.setFontSize(15)
+     cav.fillText("请输入内容", that.data.winWidth/2, 50);
+     cav.draw()
   },
 
   formSubmit: function(e){
       this.data.msg = e.detail.value.Page1Text;
       console.log("---------------");
       const that = this;
-    // wx.request({
-    //   url: 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential',
-    //   data: {
-    //     appid: 'wx336f042533bff9f1',
-    //     secret: '03eac629952d72aac4e6d4a9b0537140'
-    //   },
-    //   success: function (res) {
-    //     console.log(res.data)
-    //     var Image64 = null;
-    //     var src = null;
-    //     wx.request({
-    //       url: 'https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=' + res.data.access_token,
-    //       method: 'POST',
-    //       data: {
-    //         'scene': e.detail.value.Page1Text,
-    //         'path':'pages/index/index',
-    //       },
-    //       responseType:'arraybuffer',
-    //       success: function(res){
-    //         Image64 = wx.arrayBufferToBase64(res.data);
-    //         src = "data:image/png;base64," + Image64;
-    //         //console.log(src);
-    //         const cav = wx.createCanvasContext("canvas_BG");
-    //         cav.drawImage("../../BackGround.jpg", 0, 0, that.data.winWidth, that.data.winHeight);
-    //         cav.drawImage(src, 0, 0, 200, 200);
-    //         cav.draw();
-    //       }
-    //     })
-    //   }
-    // })
+    wx.request({
+      url: 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential',
+      data: {
+        appid: 'wx336f042533bff9f1',
+        secret: '03eac629952d72aac4e6d4a9b0537140'
+      },
+      success: function (res) {
+        console.log(res.data)
+        var Image64 = null;
+        var src = null;
+        wx.request({
+          url: 'https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=' + res.data.access_token,
+          method: 'POST',
+          data: {
+            'scene': e.detail.value.Page1Text,
+            'path':'pages/index/index',
+          },
+          responseType:'arraybuffer',
+          success: function(res){
+            Image64 = wx.arrayBufferToBase64(res.data);
+            src = "data:image/png;base64," + Image64;
+            console.log(src);
+            const cav = wx.createCanvasContext("canvas_BG");
+            // cav.drawImage("../../BackGround.jpg", 0, 0, that.data.winWidth, that.data.winHeight);
+            // cav.drawImage(src, 0, 0, 200, 200);
+            cav.draw();
+          }
+        })
+      }
+    })
 
-      wx.navigateTo({
-        url: '../index/index?msg=' + this.data.msg
-      })
+      // wx.navigateTo({
+      //   url: '../index/index?msg=' + this.data.msg
+      // })
 
   },
   /**
@@ -124,6 +129,13 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+
+  },
+  bindtap: function(res){
+     cav = this.data.CavCon;
+     cav.draw();
+  },
+  bindconfirm: function(){
 
   }
 })
