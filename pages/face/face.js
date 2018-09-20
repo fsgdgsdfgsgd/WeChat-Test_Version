@@ -35,7 +35,7 @@ Page({
       })
      const cav = wx.createCanvasContext("canvas_BG");
      cav.drawImage("../../BackGround.jpg",0,0,that.data.winWidth, that.data.winHeight);
-     cav.drawImage("../../qrcode.jpg", 0, 0, 100, 100)
+     //cav.drawImage("../../qrcode.jpg", 0, 0, 100, 100)
      //cav.drawImage(this.data.src, 0, 0, 200, 200);
      cav.setFontSize(15)
      cav.fillText("请输入内容", that.data.winWidth/2, 50);
@@ -48,24 +48,24 @@ Page({
       this.data.msg = e.detail.value.Page1Text;
       console.log("---------------");
       const that = this;
-    wx.request({
-      url: 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential',
-      data: {
-        appid: 'wx336f042533bff9f1',
-        secret: '03eac629952d72aac4e6d4a9b0537140'
-      },
-      success: function (res) {
-        console.log(res.data)
-        var Image64 = null;
-        var src = null;
+    // wx.request({
+    //   url: 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential',
+    //   data: {
+    //     appid: 'wx336f042533bff9f1',
+    //     secret: '03eac629952d72aac4e6d4a9b0537140'
+    //   },
+    //   success: function (res) {
+    //     console.log(res.data)
+    //     var Image64 = null;
+    //     var src = null;
         wx.request({
-          url: 'https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=13_MNZVmgKp0gtI11whSf8iMwHTBTXpOXt2rOWLmn9FbHZ2aAFDXbcrdMCrfhyC6DCur5nrxrEVpP4uv_FRxwN05o0l2llRJuSmbbSxAsKJsTklBAGrhRrZXBV59Fps2W8X1Xh9dVt8B08YM-9LZIZbADATCT',
+          url: 'https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=13_r8L7c3-zuQ3PEU8S_jR-Or7D5s77oj6nShCHtxhlfY2SysmaoCOVy1gKtzAkngsN9cBxO4D1oIiYPNdKMZDOfJNygQC1M9vil_U1zVLrS9MMg_T9n3M7pGEiHAxS2xLtFEmRR6jQ7OmqWnyuLMBjAGAWXM',
           method: 'POST',
           data: {
-            'scene': e.detail.value.Page1Text,
-            'path':'pages/face/face',
+            scene: e.detail.value.Page1Text,
+            page:'pages/index/index',
           },
-          responseType:'arraybuffer',
+          //responseType:'arraybuffer',
           success: function(res){
             //Image64 = wx.arrayBufferToBase64(res.data);
             //src = "data:image/png;base64," + Image64;
@@ -75,22 +75,23 @@ Page({
              cav.drawImage("../../BackGround.jpg", 0, 0, that.data.winWidth, that.data.winHeight);
              //cav.drawImage(src, 0, 0, 200, 200);
             
-             cav.draw();
+             
              wx.downloadFile({
-               url: "http://106.75.97.12/temp/qrcode.jpg",
-               
-               success:function(res){
+               url: 'http://106.75.97.12/temp/qrcode.jpg',
+               success: function(res){
+                 console.log(res);
+                 cav.drawImage(res.tempFilePath, 0, 0, 100, 100);
+                 cav.draw();
+               },
+               fail: function(res){
                  console.log(res)
-                 console.log(res.statusCode);
-                 cav.drawImage(res.tempFilePath, 0, 0, 200, 200);
-                }
+               }
              })
              
-             cav.draw();
           }
         })
-      }
-    })
+      //}
+    //})
 
       // wx.navigateTo({
       //   url: '../index/index?msg=' + this.data.msg
@@ -148,7 +149,7 @@ Page({
   bindtap: function(res){
     const cav = wx.createCanvasContext("canvas_BG");
     cav.drawImage("../../BackGround.jpg", 0, 0, this.data.winWidth, this.data.winHeight);
-    cav.drawImage("../../qrcode.jpg", 0, 0, 100, 100)
+    //cav.drawImage("../../qrcode.jpg", 0, 0, 100, 100)
     
     cav.setFontSize(15)
     cav.fillText("", this.data.winWidth / 2, 50);
@@ -157,7 +158,7 @@ Page({
   bindconfirm: function(event){
     const cav = wx.createCanvasContext("canvas_BG");
     cav.drawImage("../../BackGround.jpg", 0, 0, this.data.winWidth, this.data.winHeight);
-    cav.drawImage("../../qrcode.jpg", 0, 0, 100, 100)
+    //cav.drawImage("../../qrcode.jpg", 0, 0, 100, 100)
     
     cav.setFontSize(15)
     cav.fillText(event.detail.value, this.data.winWidth / 2, 50);

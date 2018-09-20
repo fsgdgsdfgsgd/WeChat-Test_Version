@@ -19,18 +19,67 @@ Page({
       url: '../logs/logs'
     })
   },
+
+  isPoneAvailable: function (pone) {
+    var myreg = /^[1][34578][0-9]{9}$/;
+    var ismyreg = myreg.exec(pone);
+    if (!ismyreg) {
+      return false;
+    } else {
+      return true;
+    }
+  },
+
   formSubmit: function(e) {
     console.log("form发生了Submit事件，携带数据位：", e.detail.value)
     this.data.UserData.phone = e.detail.value.phonenumber
-    var phonenum = e.detail.value.phonenumber
-    if (phonenum.length!= 11){
-        this.setData({msg:"手机号格式不正确"});
+    var phonenum = e.detail.value.phonenumber;
+    console.log(typeof(phonenum));
+    if (e.detail.value.Name == "")
+    {
+        wx.showToast({
+          title: '姓名不能为空',
+          icon:'none',
+        })
         return;
+    }
+    else if (this.data.UserData.grade == null)
+    {
+      wx.showToast({
+        title: '未选择您孩子的年级',
+        icon:'none',
+      })
+      return;
+    }
+    else if (phonenum.length== 0)
+    {
+        wx.showToast({
+          title: '手机号不能为空',
+          icon: 'none',
+        })
+        return;
+    }
+    else if (phonenum.length != 11)
+    {
+      wx.showToast({
+        title: '手机号长度不正确',
+        icon: 'none',
+      })
+      return;
+    }
+    else if (!this.isPoneAvailable(phonenum))
+    {
+      wx.showToast({
+        title: '手机号格式不正确',
+        icon:'none',
+      })
+      return;
     }
     wx.navigateTo({
       url: '../logs/logs?UserData=' + JSON.stringify(this.data.UserData)
     })
   },
+
   bindPickerChange: function(e){
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
@@ -38,6 +87,7 @@ Page({
     })
     this.data.UserData.grade = this.data.array[e.detail.value]
   },
+
   onLoad: function (options) {
     
     this.setData(
@@ -71,6 +121,7 @@ Page({
     }
     
   },
+  
   // alert() {
   //   $wuxDialog().alert({
   //     resetOnClose: true,

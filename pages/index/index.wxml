@@ -4,15 +4,13 @@
   <view class="section">
     <view class="section_title2">该文本框显示的为页面1的内容</view>
     <input name="Page1Text" placeholder='{{Msg}}'/>
-    <view class="section_title">请输入手机号</view>
-    <input name="phonenumber" placeholder='请输入手机号' type="number"/>
-    <text>{{msg}}</text>
+    姓名：<input name="Name" placeholder='请输入您的姓名'/>
     <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
       <view class="picker">
-        请选择当前年级：{{array[index]}}
+        请选择您孩子的年级：{{array[index]}}
       </view>
     </picker>
-    
+    手机号：<input name="phonenumber" placeholder='请输入您的手机号' type="number"/>
   </view>
   <view class="btn-area">
     <button formType="submit">提交</button>
