@@ -1,4 +1,5 @@
 // pages/face/face.js
+
 Page({
 
   /**
@@ -8,7 +9,6 @@ Page({
       msg: null,
       winWidth: 0,
       winHeight:0,
-      CavCon: null,
   },
 
   /**
@@ -36,11 +36,12 @@ Page({
      const cav = wx.createCanvasContext("canvas_BG");
      cav.drawImage("../../BackGround.jpg",0,0,that.data.winWidth, that.data.winHeight);
      cav.drawImage("../../qrcode.jpg", 0, 0, 100, 100)
-     this.data.CavCon = cav
      //cav.drawImage(this.data.src, 0, 0, 200, 200);
      cav.setFontSize(15)
      cav.fillText("请输入内容", that.data.winWidth/2, 50);
      cav.draw()
+     
+     
   },
 
   formSubmit: function(e){
@@ -58,21 +59,34 @@ Page({
         var Image64 = null;
         var src = null;
         wx.request({
-          url: 'https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=' + res.data.access_token,
+          url: 'https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=13_MNZVmgKp0gtI11whSf8iMwHTBTXpOXt2rOWLmn9FbHZ2aAFDXbcrdMCrfhyC6DCur5nrxrEVpP4uv_FRxwN05o0l2llRJuSmbbSxAsKJsTklBAGrhRrZXBV59Fps2W8X1Xh9dVt8B08YM-9LZIZbADATCT',
           method: 'POST',
           data: {
             'scene': e.detail.value.Page1Text,
-            'path':'pages/index/index',
+            'path':'pages/face/face',
           },
           responseType:'arraybuffer',
           success: function(res){
-            Image64 = wx.arrayBufferToBase64(res.data);
-            src = "data:image/png;base64," + Image64;
-            console.log(src);
+            //Image64 = wx.arrayBufferToBase64(res.data);
+            //src = "data:image/png;base64," + Image64;
+            //console.log(src);
+            console.log(res.data)
             const cav = wx.createCanvasContext("canvas_BG");
-            // cav.drawImage("../../BackGround.jpg", 0, 0, that.data.winWidth, that.data.winHeight);
-            // cav.drawImage(src, 0, 0, 200, 200);
-            cav.draw();
+             cav.drawImage("../../BackGround.jpg", 0, 0, that.data.winWidth, that.data.winHeight);
+             //cav.drawImage(src, 0, 0, 200, 200);
+            
+             cav.draw();
+             wx.downloadFile({
+               url: "http://106.75.97.12/temp/qrcode.jpg",
+               
+               success:function(res){
+                 console.log(res)
+                 console.log(res.statusCode);
+                 cav.drawImage(res.tempFilePath, 0, 0, 200, 200);
+                }
+             })
+             
+             cav.draw();
           }
         })
       }
@@ -132,10 +146,21 @@ Page({
 
   },
   bindtap: function(res){
-     cav = this.data.CavCon;
-     cav.draw();
+    const cav = wx.createCanvasContext("canvas_BG");
+    cav.drawImage("../../BackGround.jpg", 0, 0, this.data.winWidth, this.data.winHeight);
+    cav.drawImage("../../qrcode.jpg", 0, 0, 100, 100)
+    
+    cav.setFontSize(15)
+    cav.fillText("", this.data.winWidth / 2, 50);
+    cav.draw()
   },
-  bindconfirm: function(){
-
+  bindconfirm: function(event){
+    const cav = wx.createCanvasContext("canvas_BG");
+    cav.drawImage("../../BackGround.jpg", 0, 0, this.data.winWidth, this.data.winHeight);
+    cav.drawImage("../../qrcode.jpg", 0, 0, 100, 100)
+    
+    cav.setFontSize(15)
+    cav.fillText(event.detail.value, this.data.winWidth / 2, 50);
+    cav.draw()
   }
 })
