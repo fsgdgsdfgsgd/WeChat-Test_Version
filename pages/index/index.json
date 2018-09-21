@@ -1,6 +1,6 @@
 {
   "usingCompoents":{
-    "wux-button" : "../../components/button/button",
-    "wux-dialog" : "../../components/dialog/dialog"
+    "wux-button" : "../components/button/button",
+    "wux-dialog" : "../components/dialog/dialog"
   }
 }

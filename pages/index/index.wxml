@@ -3,7 +3,7 @@
   <form bindsubmit="formSubmit" bindreset="formReset">
   <view class="section">
     <view class="section_title2">该文本框显示的为页面1的内容</view>
-    <input name="Page1Text" placeholder='{{Msg}}'/>
+    <input name="Page1Text" />
     姓名：<input name="Name" placeholder='请输入您的姓名'/>
     <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
       <view class="picker">
@@ -18,5 +18,7 @@
   </view>
   </form>
 </view>
-
+<button class="btn" type="primary" loading="{{loading}}" disabled="{{disabled}}" bindtap="getcode">
+  获得验证码
+</button>
 <wux-dialog id="wux-dialog" />

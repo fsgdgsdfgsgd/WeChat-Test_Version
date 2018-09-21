@@ -16,7 +16,7 @@ Component({
         }
     },
     relations: {
-        '../step/index': {
+        '../step/step': {
             type: 'child',
             linked() {
                 this.updateCurrent()
@@ -31,7 +31,7 @@ Component({
     },
     methods: {
         updateCurrent() {
-            const elements = this.getRelationNodes('../step/index')
+            const elements = this.getRelationNodes('../step/step')
             const { current, direction } = this.data
 
             if (elements.length > 0) {

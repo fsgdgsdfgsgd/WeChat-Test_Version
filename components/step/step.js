@@ -7,7 +7,7 @@ Component({
         multipleSlots: true,
     },
     relations: {
-        '../steps/index': {
+        '../steps/steps': {
             type: 'parent',
         },
     },

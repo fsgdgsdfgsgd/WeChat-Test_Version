@@ -3,5 +3,6 @@
   "usingCompoents":{
     "wux-button" : "../../components/button/button",
     "wux-dialog" : "../../components/dialog/dialog"
-  }
+  },
+  "navigationBarTitleText": "学霸君1对1"
 }

@@ -2,7 +2,7 @@
   "navigationBarTitleText": "查看启动日志",
   "usingComponents": {
     "wux-steps" : "../../components/steps/steps",
-    "wux-step": "../../components/step/index"
+    "wux-step": "../../components/step/step"
   }
 
 }
