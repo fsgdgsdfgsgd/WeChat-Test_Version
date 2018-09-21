@@ -12,6 +12,7 @@
     </picker>
     手机号：<input name="phonenumber" placeholder='请输入您的手机号' type="number"/>
   </view>
+  <image src="{{src}}" style='width:100px; height:150px'></image>
   <view class="btn-area">
     <button formType="submit">提交</button>
     <button formType="reset">重置</button>

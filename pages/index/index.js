@@ -75,9 +75,23 @@ Page({
       })
       return;
     }
-    wx.navigateTo({
-      url: '../logs/logs?UserData=' + JSON.stringify(this.data.UserData)
+    wx.request({
+      url: 'http://106.75.97.12/InsertData.php',
+      data:{
+         Name: e.detail.value.Name,
+         PhoneNumber: e.detail.value.phonenumber,
+         Grade: this.data.UserData.grade
+      },
+      method :"POST",
+      header: {"content-type":"application/x-www-form-urlencoded"},
+      success: function(res){
+        console.log(res);
+        console.log("提交数据成功");
+      }
     })
+    // wx.navigateTo({
+    //   url: '../logs/logs?UserData=' + JSON.stringify(this.data.UserData)
+    // })
   },
 
   bindPickerChange: function(e){
@@ -93,32 +107,19 @@ Page({
     this.setData(
       {Msg: options.msg}
       );
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
+    wx.request({
+      url: 'http://1v1-activity.xueba100.com/auth/resetValidateCode',
+      data:{
+        phone_no:'15801423152',
+        random:"1.08934854353",
+      },
+      //dataType:"arraybuffer",
+      success: function(res){
+        console.log(res)
+
       }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
+    })
+      
     
   },
   
