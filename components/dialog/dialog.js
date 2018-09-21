@@ -1,5 +1,5 @@
-import baseBehavior from '../helpers/baseBehavior'
-import mergeOptionsToData from '../helpers/mergeOptionsToData'
+import baseBehavior from '../../helpers/baseBehavior'
+import mergeOptionsToData from '../../helpers/mergeOptionsToData'
 
 const defaults = {
     title: '',

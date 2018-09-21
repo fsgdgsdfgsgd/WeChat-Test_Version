@@ -1,4 +1,4 @@
-@import "../styles/base/fn.wxss";
+@import "../../styles/base/fn";
 
 /*!
   Ionicons, v4.3.0
