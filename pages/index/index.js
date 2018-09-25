@@ -1,37 +1,79 @@
-//index.js
-//获取应用实例
-//import { $wuxDialog } from '../../index'
-const app = getApp()
+const app = getApp();
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
+    userInfo:{},
+    transferInfo:{
+      name:'',
+      phone:'',
+      invitedNum:'',
+      recommandlist:[{
+        name:'李四',
+        userStatus:'Renewal'
+      },{
+        name:'张三',
+        userStatus:'registed' 
+      }]
+    },
+    bouns:'',
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    array:["初一", "初二", "初三"],
-    UserData: {grade:null, phone:null}
+    slider:[1,2],
+    swiperCurrent: 0,
+    cur:0,
+    inv_list:[{
+      inv_text:'已注册',
+      num:0
+    },{
+      inv_text:'已试听',
+      num:0
+    },{
+      inv_text:'已报名',
+      num:0
+    },{
+      inv_text:'已续费',
+      num:0
+    }],
+    show_img:[
+      {url:'http://wenba-ooo.ufile.ucloud.cn/c55906e21dd12364d39f758dd9cf4b32'},
+      {url:'http://wenba-ooo.ufile.ucloud.cn/c55906e21dd12364d39f758dd9cf4b32'},
+      {url:'http://wenba-ooo.ufile.ucloud.cn/c55906e21dd12364d39f758dd9cf4b32'}
+    ],
+    active: 0,
+    steps: [
+      {
+        text: '已注册',
+        desc: ''
+      },
+      {
+        text: '已试听',
+        desc: ''
+      },
+      {
+        text: '已报名',
+        desc: ''
+      },
+      {
+        text: '已续费',
+        desc: ''
+      }
+    ]
   },
 
-  onLoad: function (options) {
-    
-    this.setData(
-      {Msg: options.msg}
-      );
+  onLoad: function () {
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
+      });
+    } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
         this.setData({
           userInfo: res.userInfo,
           hasUserInfo: true
-        })
-      }
+        });
+      };
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
       wx.getUserInfo({
@@ -40,101 +82,64 @@ Page({
           this.setData({
             userInfo: res.userInfo,
             hasUserInfo: true
-          })
+          });
         }
-      })
+      });
     }
-  },
-
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-
-  isPoneAvailable: function (pone) {
-    var myreg = /^[1][34578][0-9]{9}$/;
-    var ismyreg = myreg.exec(pone);
-    if (!ismyreg) {
-      return false;
-    } else {
-      return true;
-    }
-  },
-
-  formSubmit: function(e) {
-    console.log("form发生了Submit事件，携带数据位：", e.detail.value)
-    this.data.UserData.phone = e.detail.value.phonenumber
-    var phonenum = e.detail.value.phonenumber;
-    console.log(typeof(phonenum));
-    if (e.detail.value.Name == "")
-    {
-        wx.showToast({
-          title: '姓名不能为空',
-          icon:'none',
-        })
-        return;
-    }
-    else if (this.data.UserData.grade == null)
-    {
-      wx.showToast({
-        title: '未选择您孩子的年级',
-        icon:'none',
-      })
-      return;
-    }
-    else if (phonenum.length== 0)
-    {
-        wx.showToast({
-          title: '手机号不能为空',
-          icon: 'none',
-        })
-        return;
-    }
-    else if (phonenum.length != 11)
-    {
-      wx.showToast({
-        title: '手机号长度不正确',
-        icon: 'none',
-      })
-      return;
-    }
-    else if (!this.isPoneAvailable(phonenum))
-    {
-      wx.showToast({
-        title: '手机号格式不正确',
-        icon:'none',
-      })
-      return;
-    }
-    wx.navigateTo({
-      url: '../logs/logs?UserData=' + JSON.stringify(this.data.UserData)
-    })
-  },
-
-  bindPickerChange: function(e){
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      index: e.detail.value
-    })
-    this.data.UserData.grade = this.data.array[e.detail.value]
+      "transferInfo.recommandlist[0].userStatus": ++this.data.active % 4
+      });
   },
-
-  getcode: function(e){
-    wx.request({
-      url: 'http://1v1-activity.xueba100.com/auth/resetValidateCode',
-      data: {
-        phone_no:13521120062,
-        img_code:'1pxbxs'
+  getUserInfo: function (e) {
+    console.log(e)
+    app.globalData.userInfo = e.detail.userInfo
+    this.setData({
+      userInfo: e.detail.userInfo,
+      hasUserInfo: true
+    })
+    console.log()
+  },
+  onReady: function() {
+    //Do some when page ready.
+  },
+  onShow: function() {
+    //Do some when page show.
+    
+  },
+  onHide: function() {
+    //Do some when page hide.
+    
+  },
+  onUnload: function() {
+    //Do some when page unload.
+    
+  },
+  onPullDownRefresh: function() {
+    //Do some when page pull down.
+    
+  },
+  swiperChange: function(e){
+    this.setData({
+        swiperCurrent: e.detail.current
+    })
+  },
+  currentChange: function(){
+    this.setData({
+      cur:1
+    })
+  },
+  changetoposter:function(){
+    wx.navigateTo({
+      url: '../../pages/face/face',
+      success: function(res){
+        // success
       },
-      method: 'POST',
-      success: (result)=>{
-        console.log(result)
+      fail: function() {
+        // fail
       },
-      fail: ()=>{},
-      complete: ()=>{}
-    });
-  }
-
+      complete: function() {
+        // complete
+      }
+    })
+  },
 })

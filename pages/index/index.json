@@ -1,6 +1,8 @@
 {
-  "usingCompoents":{
-    "wux-button" : "../components/button/button",
-    "wux-dialog" : "../components/dialog/dialog"
-  }
+  "usingComponents": {
+    "demo-block": "../../components/demo-block/index",
+    "van-button": "../../dist/button/index",
+    "van-steps": "../../dist/steps/index"
+  },
+  "navigationBarTitleText": "君君辅导"
 }

@@ -1,21 +1,150 @@
 /**index.wxss**/
-.userinfo {
+/* 用户信息样式 */
+.user-block{
+    position: relative;
+    height: 100vh;
+}
+
+/* 滑动页面样式 */
+.user-block .swiper{
+  height: 95vh;
+  position: relative;
+}
+
+.show{
+  height: 20vh;
+  margin: 10rpx;
+}
+
+.show .item{
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.show .item .img{
+  margin: 0;
+  border-radius: 40rpx;
+  width: 100%;
+  height: 100%;
+}
+
+.item1{
+  margin: 10rpx;
+  border-radius: 40rpx;
+  height: 72vh;
+  position: relative;
+  top: 15rpx;
+  box-shadow: 1rpx 1rpx 4rpx 4rpx #F2F1FC;
+}
+
+.userinfo-avatar{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-left: 5%;
+  margin-top: 5%;
+}
+
+/* 邀请信息样式 */
+.invitedInfo{
+  border: #EE5557;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 20rpx;
+  height: 12%;
+
+  position: absolute;
+  bottom: 150rpx;
+}
+
+.inv_item{
+  width: 25%;
+  height: 100%;
   display: flex;
   flex-direction: column;
+
+  align-items: center;
+  float: left;
+  border-right: 5rpx solid #eee;
+}
+
+.inv_item_last{
+  width: 25%;
+  height: 100%;
+  margin-bottom: 20rpx;
+  margin-top: 20rpx; 
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  float: left;
+}
+
+.inv_text{
+  font-size: 35rpx;
+  color: #EE5557;
+  line-height: 60rpx;
+  text-align: center;
+}
+
+.btnarea{
+  position: absolute;
+  flex-direction: row;
+  width: 100%;
+  height: 10%;
+  bottom: 25rpx;
+  display: flex;
+  justify-content: space-around;
   align-items: center;
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
+.redbtn1{
+  width: 40%;
+  height: 60rpx;
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 30rpx;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #EE5557;
+  border-radius: 20rpx;
+}
+
+.item2{
+  margin: 10rpx;
+  border-radius: 40rpx;
+  height: 93vh;
+  position: relative;
+  box-shadow: 2rpx 2rpx 4rpx 4rpx #F2F1FC;
+}
+
+.steps{
   margin: 20rpx;
-  border-radius: 50%;
 }
 
-.userinfo-nickname {
-  color: #aaa;
+.user-block .dots{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 20rpx;
+  display: flex;
+  justify-content: center;
 }
 
-.usermotto {
-  margin-top: 200px;
+.user-block .dots .dot{
+  margin: 0 8rpx;
+  width: 20rpx;
+  height: 14rpx;
+  background: #aaa;
+  border-radius: 8rpx;
+  transition: all .6s;
+}
+.user-block .dots .dot.active{
+  width: 70rpx;
+  background: #EE5557;
 }

@@ -4,7 +4,10 @@ const util = require('../../utils/util.js')
 Page({
   data: {
     logs: [],
-    UserData:{grade:null, phone:null},
+    UserData:{
+      grade:null, 
+      phone:null
+    },
     current: 1,
   },
   onLoad: function (options) {
