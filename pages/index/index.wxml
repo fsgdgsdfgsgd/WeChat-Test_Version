@@ -27,17 +27,26 @@
           </view>
         </view>
     </swiper-item>
-    <swiper-item>
-      <view class="item2" hover-class="none" hover-stop-propagation="false">
-        <view class="steps" wx:for="{{transferInfo.recommandlist}}">
-          <van-steps
-          steps="{{ steps }}"
-          active="{{ active }}"
-          custom-class="demo-margin-bottom"
-          active-color='#EE5557'
-        />
-        </view>        
-      </view>
+    <swiper-item class="">
+      <scroll-view class="item2" scroll-y="{{true}}" scroll-with-animation="{{true}}" hover-class="none" hover-stop-propagation="false">
+        <view class="step-title" hover-class="none" hover-stop-propagation="false">
+          <text class="step-text">好友进度详情</text>
+        </view>
+        <view class="">
+          <view wx:for="{{transferInfo.recommandlist}}" class="steps">
+            <view class="invitedname">{{transferInfo.recommandlist[index].name}}</view>
+              <van-steps
+              steps="{{ steps }}"
+              active="{{ transferInfo.recommandlist[index].active }}"
+              custom-class="demo-margin-bottom"
+              active-color='#EE5557'
+              />
+          </view>       
+        </view>
+        <view class="btnarea2" hover-class="none" hover-stop-propagation="false">
+          <view class="redbtn3" bind:tap="changetoposter"><text >邀请好友</text></view>  
+        </view>
+      </scroll-view>
     </swiper-item>
   </swiper>
   <view class="dots">

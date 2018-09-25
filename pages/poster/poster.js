@@ -20,28 +20,26 @@ Page({
         success: function(res){
           wx.saveImageToPhotosAlbum({
             filePath: res.tempFilePath,
-          })
+          });
         }
-      }, this)
+      }, this);
   },
   onLoad: function (options) {
-      var that = this
+      var that = this;
       wx.getSystemInfo({
         success: function(res){
-          console.log(res)
-          that.data.winWidth = res.windowWidth
-          that.data.winHeight = res.windowHeight
+          console.log(res);
+          that.data.winWidth = res.windowWidth;
+          that.data.winHeight = res.windowHeight;
         }
-      })
+      });
      const cav = wx.createCanvasContext("canvas_BG");
-     cav.drawImage("../../BackGround.jpg",0,0,that.data.winWidth, that.data.winHeight);
+     cav.drawImage("../../images/BackGround.jpg",0,0,that.data.winWidth, that.data.winHeight);
      //cav.drawImage("../../qrcode.jpg", 0, 0, 100, 100)
      //cav.drawImage(this.data.src, 0, 0, 200, 200);
-     cav.setFontSize(15)
+     cav.setFontSize(15);
      cav.fillText("请输入内容", that.data.winWidth/2, 50);
-     cav.draw()
-     
-     
+     cav.draw();
   },
 
   formSubmit: function(e){
@@ -59,24 +57,22 @@ Page({
     //     var Image64 = null;
     //     var src = null;
         wx.request({
-          url: 'https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=13_r8L7c3-zuQ3PEU8S_jR-Or7D5s77oj6nShCHtxhlfY2SysmaoCOVy1gKtzAkngsN9cBxO4D1oIiYPNdKMZDOfJNygQC1M9vil_U1zVLrS9MMg_T9n3M7pGEiHAxS2xLtFEmRR6jQ7OmqWnyuLMBjAGAWXM',
+          url: 'https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=14_ZkxSXJWhHlsPo0Jf44nVbkubIWu2saNQTHxFgD2TnK8Hff0Y18DluyoTUOF5RsLZcSg-UuC6vEt2jkWei-kRkx-TbbtfgqsBiM8b-315gLD3KJaStVcJ1wdWaSJmDwBB32FP8Up6GCz9aCuTYPHdACANEW',
           method: 'POST',
           data: {
             scene: e.detail.value.Page1Text,
-            page:'pages/index/index',
+            page:'pages/register/register',
           },
           //responseType:'arraybuffer',
           success: function(res){
             //Image64 = wx.arrayBufferToBase64(res.data);
             //src = "data:image/png;base64," + Image64;
             //console.log(src);
-            console.log(res.data)
+            console.log(res.data);
             const cav = wx.createCanvasContext("canvas_BG");
-             cav.drawImage("../../BackGround.jpg", 0, 0, that.data.winWidth, that.data.winHeight);
+              cav.drawImage("../../images/BackGround.jpg", 0, 0, that.data.winWidth, that.data.winHeight);
              //cav.drawImage(src, 0, 0, 200, 200);
-            
-             
-             wx.downloadFile({
+              wx.downloadFile({
                url: 'http://106.75.97.12/temp/qrcode.jpg',
                success: function(res){
                  console.log(res);
@@ -84,12 +80,12 @@ Page({
                  cav.draw();
                },
                fail: function(res){
-                 console.log(res)
+                 console.log(res);
                }
-             })
+             });
              
           }
-        })
+        });
       //}
     //})
 
@@ -98,70 +94,22 @@ Page({
       // })
 
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
   bindtap: function(res){
     const cav = wx.createCanvasContext("canvas_BG");
-    cav.drawImage("../../BackGround.jpg", 0, 0, this.data.winWidth, this.data.winHeight);
+    cav.drawImage("../../images/BackGround.jpg", 0, 0, this.data.winWidth, this.data.winHeight);
     //cav.drawImage("../../qrcode.jpg", 0, 0, 100, 100)
     
-    cav.setFontSize(15)
+    cav.setFontSize(15);
     cav.fillText("", this.data.winWidth / 2, 50);
-    cav.draw()
+    cav.draw();
   },
   bindconfirm: function(event){
     const cav = wx.createCanvasContext("canvas_BG");
-    cav.drawImage("../../BackGround.jpg", 0, 0, this.data.winWidth, this.data.winHeight);
+    cav.drawImage("../../images/BackGround.jpg", 0, 0, this.data.winWidth, this.data.winHeight);
     //cav.drawImage("../../qrcode.jpg", 0, 0, 100, 100)
     
-    cav.setFontSize(15)
+    cav.setFontSize(15);
     cav.fillText(event.detail.value, this.data.winWidth / 2, 50);
-    cav.draw()
+    cav.draw();
   }
 })

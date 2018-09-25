@@ -20,10 +20,10 @@ page{
 }
 .Input-area{
   position: absolute;
-  bottom: 265%;
+  bottom: 30%;
   height: 55rpx;
-  width: 150%;
-  left: 100%;
+  width: 100%;
+  left: 50%;
   background-color:white;
   z-index: 2;
   
@@ -34,7 +34,7 @@ page{
   bottom:0px;
   z-index: 1;
 }
-.SaveImg{
+.saveImg{
   position: absolute;
   width: 50%;
   bottom: 0px;

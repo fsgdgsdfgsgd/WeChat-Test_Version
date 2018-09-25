@@ -9,10 +9,28 @@ Page({
       invitedNum:'',
       recommandlist:[{
         name:'李四',
-        userStatus:'Renewal'
+        userStatus:'Renewal',
+        active:0
       },{
         name:'张三',
-        userStatus:'registed' 
+        userStatus:'registed',
+        active:1
+      },{
+        name:'张三',
+        userStatus:'registed',
+        active:3
+      },{
+        name:'张三',
+        userStatus:'registed',
+        active:2
+      },{
+        name:'张三',
+        userStatus:'registed',
+        active:1
+      },{
+        name:'张三',
+        userStatus:'registed',
+        active:3
       }]
     },
     bouns:'',
@@ -121,16 +139,16 @@ Page({
   swiperChange: function(e){
     this.setData({
         swiperCurrent: e.detail.current
-    })
+    });
   },
   currentChange: function(){
     this.setData({
       cur:1
-    })
+    });
   },
   changetoposter:function(){
     wx.navigateTo({
-      url: '../../pages/face/face',
+      url: '../../pages/poster/poster',
       success: function(res){
         // success
       },

@@ -119,12 +119,68 @@
   margin: 10rpx;
   border-radius: 40rpx;
   height: 93vh;
+  width: 685rpx;
   position: relative;
   box-shadow: 2rpx 2rpx 4rpx 4rpx #F2F1FC;
 }
 
+.step-title{
+  height: 100rpx;
+  font-size: 30rpx;
+  color: #EE5557;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.step-text{
+  width: 300rpx;
+  height: 55rpx;
+  border-radius: 10rpx;
+  border-bottom:4rpx solid #aaa;
+  text-align: center;
+  font-weight: 700;
+}
+.steps-container{
+  margin: 20rpx;
+}
+
 .steps{
   margin: 20rpx;
+  border-radius: 30rpx;
+}
+
+.invitedname{
+  margin: 20rpx;
+  font-size: 25rpx;
+  color: #000;
+}
+
+.btnarea2{
+  flex-direction: row;
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.redbtn3{
+  width: 60%;
+  height: 60rpx;
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 30rpx;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #EE5557;
+
+  position: relative;
+  bottom: 20rpx;
+  border-radius: 20rpx;
 }
 
 .user-block .dots{

@@ -10,7 +10,7 @@
     <button formType="submit">输入完毕</button>
   </cover-view>
 </form>
-<cover-view class="SaveImg">
+<cover-view class="saveImg">
 <button bindtap='save'>保存图片</button>
 </cover-view>
 
