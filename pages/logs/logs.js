@@ -20,15 +20,15 @@ Page({
     console.log(this.data.UserData)
     this.setData({
       grade: this.data.UserData.grade
-    })
+    });
     this.setData({
       phonenumber: this.data.UserData.phone
-    })
+    });
   },
   onClick() {
       const current = this.data.current + 1 > 2 ? 0 : this.data.current + 1
       this.setData({
-        current,
-      })
+        current:'logs.wxml'
+      });
   }
 })

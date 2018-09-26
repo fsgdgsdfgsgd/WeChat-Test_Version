@@ -1,43 +1,96 @@
-/* pages/face/face.wxss */
-page{
-  width: 100%;
-  height: 100%;
+/* pages/face/face.wxss */  
+
+.postercontainer{
+  margin: 20rpx;
+  border-radius: 40rpx;
+  height: 88vh;
+  width: 710rpx;
+  position: relative;
+  box-shadow: 2rpx 2rpx 4rpx 4rpx #F2F1FC;
 }
+
 .Canvas{
   position: absolute;
-  width: 100%;
+  width: 710rpx;
   height: 100%;
   box-sizing: border-box;
   z-index: 1;
 }
-.container{
+
+.form{
+  width: 1000rpx;
+  height: 100%;
+}
+ 
+/* .container{
   position: absolute;
   width: 50%;
   height: auto;
   left: 0px;
   bottom:  0px;
+  height: 10%;
   z-index: 1;
-}
+} */
+
 .Input-area{
   position: absolute;
   bottom: 30%;
   height: 55rpx;
-  width: 100%;
-  left: 50%;
-  background-color:white;
-  z-index: 2;
-  
-}
-.btn-area{
-  position: absolute;
   width: 50%;
-  bottom:0px;
-  z-index: 1;
+  left: 25%;
+  z-index: 2;
+  border: 2rpx solid #000;
 }
+
+.btnarea{
+  position: absolute;
+  flex-direction: row;
+  width: 750rpx;
+  height: 10%;
+  bottom: 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.redbtn1{
+  width: 40%;
+  height: 60rpx;
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 30rpx;
+  color: #fff;
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #EE5557;
+  border-radius: 20rpx;
+}
+
+.redbtn1.left{
+  margin-left: 30rpx;
+}
+
+.redbtn1.right{
+  margin-right: 30rpx;
+}
+
+.redbtn1::after{
+  border: none;
+}
+
 .saveImg{
   position: absolute;
-  width: 50%;
-  bottom: 0px;
+  width: 40%;
+  height: 8%;
+  bottom: 5px;
   right: 0px;
   z-index:9999;
+}
+
+.btn{
+  border-radius: 40rpx;
+  width: 40%;
+  height: 60%;
+  background-color: #ee5557;
 }

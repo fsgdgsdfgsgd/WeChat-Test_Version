@@ -1,10 +1,4 @@
 /**index.wxss**/
-/* 用户信息样式 */
-.user-block{
-    position: relative;
-    height: 100vh;
-}
-
 /* 滑动页面样式 */
 .user-block .swiper{
   height: 95vh;
@@ -32,18 +26,55 @@
 .item1{
   margin: 10rpx;
   border-radius: 40rpx;
-  height: 72vh;
+  height: 71.2vh;
   position: relative;
   top: 15rpx;
   box-shadow: 1rpx 1rpx 4rpx 4rpx #F2F1FC;
+}
+
+.userinfo-container{
+  display: flex;
+  height: 140rpx;
+  position: relative;
+  top: 30rpx;
 }
 
 .userinfo-avatar{
   width: 100rpx;
   height: 100rpx;
   border-radius: 50%;
-  margin-left: 5%;
-  margin-top: 5%;
+  margin: 20rpx;
+  margin-left: 40rpx;
+}
+
+.userinfo-nickname{
+  font-size: 30rpx;
+  color: #aaa;
+  text-align: center;
+  margin-top: 30rpx;
+}
+
+.bouns-container{
+  position: relative;
+  top: 160rpx;
+}
+
+.bouns{
+  display: flex;
+  height: 180rpx;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 100rpx;
+}
+
+.bouns-text{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  color: #EE5557;
+  font-size: 35rpx;
 }
 
 /* 邀请信息样式 */
@@ -115,6 +146,10 @@
   border-radius: 20rpx;
 }
 
+.redbtn1::after{
+  border: none;
+}
+
 .item2{
   margin: 10rpx;
   border-radius: 40rpx;
@@ -179,8 +214,12 @@
   background-color: #EE5557;
 
   position: relative;
-  bottom: 20rpx;
+  bottom: 15rpx;
   border-radius: 20rpx;
+}
+
+.redbtn3::after{
+  border: none;
 }
 
 .user-block .dots{
@@ -201,6 +240,6 @@
   transition: all .6s;
 }
 .user-block .dots .dot.active{
-  width: 70rpx;
+  width: 120rpx;
   background: #EE5557;
 }

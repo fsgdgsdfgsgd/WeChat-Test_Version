@@ -1,4 +1,4 @@
-<!--index.wxml-->
+<!--register.wxml-->
 <view class="container">
   <form bindsubmit="formSubmit" bindreset="formReset">
   <view class="section">
@@ -13,10 +13,8 @@
     手机号：<input name="phonenumber" placeholder='请输入您的手机号' type="number"/>
   </view>
   <view class="btn-area">
-    <button formType="submit">提交</button>
+    <button class="btn1" formType="submit">提交</button>
     <button formType="reset">重置</button>
   </view>
   </form>
 </view>
-
-<wux-dialog id="wux-dialog" />

@@ -33,7 +33,7 @@ Page({
         active:3
       }]
     },
-    bouns:'',
+    bouns:9,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     slider:[1,2],
     swiperCurrent: 0,
@@ -104,38 +104,18 @@ Page({
         }
       });
     }
-    this.setData({
-      "transferInfo.recommandlist[0].userStatus": ++this.data.active % 4
-      });
   },
+
   getUserInfo: function (e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
+    console.log(e);
+    app.globalData.userInfo = e.detail.userInfo;
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
-    })
-    console.log()
+    });
+    console.log();
   },
-  onReady: function() {
-    //Do some when page ready.
-  },
-  onShow: function() {
-    //Do some when page show.
-    
-  },
-  onHide: function() {
-    //Do some when page hide.
-    
-  },
-  onUnload: function() {
-    //Do some when page unload.
-    
-  },
-  onPullDownRefresh: function() {
-    //Do some when page pull down.
-    
-  },
+
   swiperChange: function(e){
     this.setData({
         swiperCurrent: e.detail.current
@@ -158,6 +138,6 @@ Page({
       complete: function() {
         // complete
       }
-    })
-  },
-})
+    });
+  }
+});

@@ -1,16 +1,18 @@
 <!--pages/face/face.wxml-->
-<canvas style="width: 100%; height: 100%" canvas-id="canvas_BG"></canvas>
-<form bindsubmit="formSubmit">
-  <view class='container'>
-    <view class="Input-area">
-      <input name="Page1Text" placeholder='' bindtap='bindtap' bindconfirm='bindconfirm'/>
-    </view>
+<view class="user-block" id="demo">
+  <view class="postercontainer" id="poster">
+    <canvas canvas-id="canvas_BG" class="Canvas"></canvas>
   </view>
-  <cover-view class="btn-area">
-    <button formType="submit">输入完毕</button>
-  </cover-view>
-</form>
-<cover-view class="saveImg">
-<button bindtap='save'>保存图片</button>
-</cover-view>
+  <form bindsubmit="formSubmit" class="form">
+      <!-- <view class='container'> -->
+        <view wx:if="{{inipage == 1}}" class="Input-area">
+          <input name="userPhone" placeholder='' bindtap='bindtap' bindconfirm='bindconfirm'/>
+        </view>
+      <!-- </view> -->
+       <view class="btnarea">
+        <button class="redbtn1 left" formType="submit">生成专属二维码</button>
+        <button class="redbtn1 right" bindtap='saveImageToPhotosAlbum'>保存图片</button>
+      </view>
+    </form>
+</view>
 
